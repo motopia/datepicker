@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="region_data.js"></script>
     <style>
     	.datepicker{
     		display: inline-block;
@@ -18,14 +19,17 @@
 	    	padding: 0;
 	    }
 	    li{
-	    	width: 490px;
+	    	width: 505px;
 	    	padding: 0;
 	    }
 		li label{
 			display: inline-block;
 			width: 70px;
+			height: 30px;
+			line-height: 30px;
 			float: left;
 			text-align: center;
+			border: 1px solid #B8C163;
 		}	
 		.currentmonth{
 			display: inline-block;
@@ -101,6 +105,8 @@
 		function setCurrentYearAndMonth(){
 			document.querySelector('.currentyear').innerText = currentYear;
 			document.querySelector('.currentmonth').innerText =currentMonth;
+			//是否当天
+			var is_currentDay = new Date().getFullYear()==currentYear && new Date().getMonth()+1==currentMonth;
 			//是否闰年
 			var is_leapYear = currentYear%100==0 && currentYear%400==0;
 			//是否闰月
@@ -118,14 +124,14 @@
 					for (var j = W; j >= 1; j--) {
 						currentDom += "<label>&nbsp;</label>"
 					};
-					currentDom += "<label>"+i+"</label>";
+					currentDom += "<label style='"+(is_currentDay && i==new Date().getDate()?"color:red;background-color:#ccf;":"")+"'>"+i+"</label>";
 				}else if(i==daysOfCurrentMonth){
-					currentDom += "<label>"+i+"</label>";
-					for (var k = 7-W; k >= 1; k--) {
+					currentDom += "<label style='"+(is_currentDay && i==new Date().getDate()?"color:red;background-color:#ccf;":"")+"'>"+i+"</label>";
+					for (var k = 6-W; k >= 1; k--) {
 						currentDom += "<label>&nbsp;</label>"
 					};
 				}else{
-					currentDom += "<label>"+i+"</label>";
+					currentDom += "<label style='"+(is_currentDay && i==new Date().getDate()?"color:red;background-color:#ccf;":"")+"'>"+i+"</label>";
 				}
 			};
 			document.querySelector('.dinamicDom').innerHTML = currentDom;
