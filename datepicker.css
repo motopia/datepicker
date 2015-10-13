@@ -1,0 +1,46 @@
+body{
+	margin:10;
+}
+.datepickerBox{
+	display: none;
+	width:294px;
+	border: 1px solid red;
+	position: absolute;
+}
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+li{
+	width: 294px;
+	padding: 0;
+	float: left;
+}
+li label{
+	display: inline-block;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	text-align: center;
+	border: 1px solid #B8C163;
+}	
+.dinamicDom label{
+	cursor: pointer;
+}
+.currentmonth{
+	display: inline-block;
+	width: 20px;
+}
+.control{
+	text-align: center;
+	padding: 10px;
+}
+.control:before,.control:after{
+	overflow:hidden;
+}	
+.week:before,.week:after{
+	height: 0;
+	overflow:hidden;
+}	
